@@ -121,6 +121,11 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- LazyGit binding
 vim.keymap.set('n', '<leader>g', '<cmd>LazyGit<CR>')
 
+-- Oil key binding
+vim.keymap.set('n', '<leader>e', function()
+  require('oil').open_float()
+end, { desc = '[E]xplore' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -201,6 +206,18 @@ require('lazy').setup({
   -- Run `:Copilot setup` to configure
   {
     'github/copilot.vim',
+  },
+
+  {
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    -- Optional dependencies
+    -- dependencies = { { 'echasnovski/mini.icons', opts = {} } },
+    dependencies = { 'nvim-tree/nvim-web-devicons' }, -- use if you prefer nvim-web-devicons
+    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+    lazy = false,
   },
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
