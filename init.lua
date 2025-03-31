@@ -126,6 +126,9 @@ vim.keymap.set('n', '<leader>e', function()
   require('oil').open_float()
 end, { desc = '[E]xplore' })
 
+-- Copilot key bindings
+vim.keymap.set('n', '<leader>i', '<cmd>CopilotChat<CR>', { desc = '[C]opilot [C]hat' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
