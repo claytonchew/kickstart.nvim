@@ -122,7 +122,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('n', '<leader>g', '<cmd>LazyGit<CR>')
 
 -- Oil key binding
-vim.keymap.set('n', '<leader>e', function()
+vim.keymap.set('n', '<leader>o', function()
   require('oil').open_float()
 end, { desc = '[E]xplore' })
 
@@ -205,6 +205,32 @@ require('lazy').setup({
     },
   },
 
+  -- Snack
+  {
+    'folke/snacks.nvim',
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+      bigfile = { enabled = false },
+      dashboard = { enabled = false },
+      explorer = { enabled = false },
+      indent = { enabled = true },
+      input = { enabled = false },
+      lazygit = { enabled = true },
+      picker = { enabled = false },
+      notifier = { enabled = false },
+      quickfile = { enabled = false },
+      scope = { enabled = false },
+      scroll = { enabled = true },
+      statuscolumn = { enabled = false },
+      words = { enabled = false },
+    },
+  },
+
   -- GitHub Copilot
   -- Run `:Copilot setup` to configure
   {
@@ -229,7 +255,10 @@ require('lazy').setup({
     'stevearc/oil.nvim',
     ---@module 'oil'
     ---@type oil.SetupOpts
-    opts = {},
+    opts = {
+
+      default_file_explorer = true,
+    },
     -- Optional dependencies
     -- dependencies = { { 'echasnovski/mini.icons', opts = {} } },
     dependencies = { 'nvim-tree/nvim-web-devicons' }, -- use if you prefer nvim-web-devicons
